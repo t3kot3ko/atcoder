@@ -1,1 +1,4 @@
 input
+.python-version
+.vscode/*.*
+!.vscode/launch.json
