@@ -1,0 +1,1 @@
+print(700 + 100 * sum([1 if s == "o" else 0 for s in list(input())]))
