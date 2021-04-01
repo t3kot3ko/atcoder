@@ -1,23 +1,17 @@
-import sys
-# lines = [l.rstrip() for l in sys.stdin.readlines()]
-lines = """3
-1 3 2
-3 1 2
-""".split("\n")
-n = int(lines[0])
-ps = [int(i) for i in lines[1].split(" ")]
-qs = [int(i) for i in lines[2].split(" ")]
+import itertools
 
-def factorial(n):
-    r = 1
-    for i in range(n):
-       r *= i 
-    return r
+n = int(input())
+ps = list(map(int, input().split(" ")))
+qs = list(map(int, input().split(" ")))
 
-a = 0
-for p in ps:
-    a += factorial(n - 1) * (n - p)
+c = 0
+for perm in itertools.permutations(list(range(1, n+1)), n):
+    if all([ps[i] == perm[i] for i in range(n)]):
+        a = c
 
-print(r + 1)
+    if all([qs[i] == perm[i] for i in range(n)]):
+        b = c
 
+    c += 1
 
+print(a - b if a > b else b - a)
